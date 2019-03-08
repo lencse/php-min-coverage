@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+namespace App;
+
+use GetOptionKit\Option;
+use GetOptionKit\OptionCollection;
+use GetOptionKit\OptionParser;
+
+foreach ([
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '../autoload.php',
+] as $autoload)
+if (is_file($autoload)) {
+    require_once $autoload;
+}
+
+$specs = new OptionCollection();
+$specs->add('c|min-coverage:', 'Minimum coverage')->isa('Number');
+$specs->add('f|clover-file:', 'Clover XML output file')->isa('String');
+$parser = new OptionParser($specs);
+
+$options = $parser->parse($argv)->keys;
+
+$cloverXmlFile = $options['clover-file']->value;
+
+
+$xml = new \SimpleXMLElement(file_get_contents($cloverXmlFile));
+$metrics = $xml->xpath('//metrics');
+$total = 0;
+$covered = 0;
+foreach ($metrics as $metric) {
+    $total += (int) $metric['elements'];
+    $covered += (int) $metric['coveredelements'];
+}
+
+if ((int) $options['min-coverage']->value > $covered / $total * 100) {
+    exit(1);
+}
+

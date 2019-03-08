@@ -1,0 +1,35 @@
+{
+    "name": "lencse/min-coverage",
+    "description": "Check minimum coverage",
+    "type": "library",
+    "license": "MIT",
+    "bin": [
+        "bin/min-coverage"
+    ],
+    "authors": [
+        {
+            "name": "Levente Löki",
+            "email": "leventeloki@gmail.com"
+        }
+    ],
+    "autoload": {},
+    "autoload-dev": {
+        "psr-4": {
+            "Lencse\\Test\\Project1\\Test\\": "./test/project1/test/",
+            "Lencse\\Test\\Project1\\": "./test/project1/src/",
+            "Lencse\\Test\\Project2\\Test\\": "./test/project2/test/",
+            "Lencse\\Test\\Project2\\": "./test/project2/src/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "~5.7",
+        "corneltek/getoptionkit": "^2.5"
+    },
+    "require-dev": {
+    },
+    "scripts": {
+        "test": [
+            "./test/test.sh"
+        ]
+    }
+}
