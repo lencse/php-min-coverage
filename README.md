@@ -1,6 +1,6 @@
 # PHP Min coverage test
 
-[![GitHub version](https://badge.fury.io/gh/lencse%2Fphp-min-coverage.svg)](https://badge.fury.io/gh/lencse%2Fphp-min-coverage)
+https://badge.fury.io/ph/lencse%2Fmin-coverage.svg
 [![Build Status](https://travis-ci.org/lencse/php-min-coverage.svg?branch=master)](https://travis-ci.org/lencse/min-coverage)
 
 ## Install
