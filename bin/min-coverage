@@ -37,6 +37,6 @@ foreach ($metrics as $metric) {
 }
 
 if ((int) $options['min-coverage']->value > $covered / $total * 100) {
+    echo 'Min coverage failed' . PHP_EOL;
     exit(1);
 }
-
